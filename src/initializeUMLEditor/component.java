@@ -23,12 +23,16 @@ public class component {
     public static JMenuItem groupItem;
     public static JMenuItem ungroupItem;
     public static JMenuItem changeObjectItem;
+    public static JMenuItem addBorderItem;
+    public static JMenuItem addShadowItem;
 
     public static final String fileButtonName = "File";
     public static final String editButtonName = "Edit";
     public static final String groupItemName = "Group";
     public static final String ungroupItemName = "Ungroup";
     public static final String changeObjectItemName = "Change Object Name";
+    public static final String addBorderItemName = "Add Border";
+    public static final String addShadowItemName = "Add Shadow";
 
     // 按鈕列表
     public static JPanel buttonPanel;
@@ -40,11 +44,9 @@ public class component {
     public static final String classButtonName = "Class";
     public static final String usecaseButtonName = "Use Case";
 
-
     // 畫布
     public static JPanel canvas;
     public static int objectBeingselectlasttime = 0;
     public static int compositeBeingselectlasttime = 0;
-
 
 }

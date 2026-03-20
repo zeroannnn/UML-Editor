@@ -5,6 +5,8 @@ import functionBar.*;
 import functionBar.functionBarConcreteClass.changeObjectName;
 import functionBar.functionBarConcreteClass.groupItems;
 import functionBar.functionBarConcreteClass.ungroupItems;
+import functionBar.functionBarConcreteClass.addBorderDecorator;
+import functionBar.functionBarConcreteClass.addShadowDecorator;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -25,6 +27,8 @@ public class functionBarHandler implements ActionListener {
         strategyMap.put(component.groupItemName, new groupItems(canvasHandler));
         strategyMap.put(component.ungroupItemName, new ungroupItems(canvasHandler));
         strategyMap.put(component.changeObjectItemName, new changeObjectName(canvasHandler));
+        strategyMap.put(component.addBorderItemName, new addBorderDecorator(canvasHandler));
+        strategyMap.put(component.addShadowItemName, new addShadowDecorator(canvasHandler));
     }
 
     public void actionPerformed(ActionEvent e) {

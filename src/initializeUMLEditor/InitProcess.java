@@ -49,12 +49,18 @@ public class InitProcess {
         component.changeObjectItem = new JMenuItem(component.changeObjectItemName);
         component.groupItem = new JMenuItem(component.groupItemName);
         component.ungroupItem = new JMenuItem(component.ungroupItemName);
+        component.addBorderItem = new JMenuItem(component.addBorderItemName);
+        component.addShadowItem = new JMenuItem(component.addShadowItemName);
         component.editButton.add(component.changeObjectItem);
         component.editButton.add(component.groupItem);
         component.editButton.add(component.ungroupItem);
+        component.editButton.add(component.addBorderItem);
+        component.editButton.add(component.addShadowItem);
         component.changeObjectItem.addActionListener(functionBarHandler);
         component.groupItem.addActionListener(functionBarHandler);
         component.ungroupItem.addActionListener(functionBarHandler);
+        component.addBorderItem.addActionListener(functionBarHandler);
+        component.addShadowItem.addActionListener(functionBarHandler);
     }
 
     // 建立左側按鈕面板

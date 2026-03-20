@@ -14,16 +14,18 @@ import button.buttonConcreteClass.*;
 import model.concreteClass.compositeObject;
 import model.lineObject;
 import model.basicObject;
+import model.decorator.BorderDecorator;
+import model.decorator.ShadowDecorator;
 
-public class canvasAreaHandler extends JPanel implements MouseListener  {
-    public static ArrayList<basicObject>        objects		            = new ArrayList<>();
-    public static ArrayList<lineObject>         lines		            = new ArrayList<>();
-    public static ArrayList<compositeObject>    compositeObjects		= new ArrayList<>();
-    public Point                                startPoint              = null;
-    public Point                                endPoint                = null;
-    public Boolean                              startExist              = false;
-    public Boolean                              endExist                = false;
-    public basicObject                          connectionLineSelectedObject;
+public class canvasAreaHandler extends JPanel implements MouseListener {
+    public static ArrayList<basicObject> objects = new ArrayList<>();
+    public static ArrayList<lineObject> lines = new ArrayList<>();
+    public static ArrayList<compositeObject> compositeObjects = new ArrayList<>();
+    public Point startPoint = null;
+    public Point endPoint = null;
+    public Boolean startExist = false;
+    public Boolean endExist = false;
+    public basicObject connectionLineSelectedObject;
 
     private buttonAction currentStrategy;
 
@@ -76,7 +78,7 @@ public class canvasAreaHandler extends JPanel implements MouseListener  {
 
     // composite 被選取
     public boolean selectGroupByClick(MouseEvent e) {
-        if(!compositeObjects.isEmpty()) {
+        if (!compositeObjects.isEmpty()) {
             compositeObjects.get(component.compositeBeingselectlasttime).setSelect(false);
             for (int i = 0; i < compositeObjects.size(); i++) {
                 if (GroupObjectIsInside(compositeObjects.get(i), e.getPoint())) {
@@ -160,6 +162,36 @@ public class canvasAreaHandler extends JPanel implements MouseListener  {
         }
     }
 
+    // 為選取的物件加上 Border Decorator
+    public void addBorderToSelectedObject() {
+        for (int i = 0; i < objects.size(); i++) {
+            if (objects.get(i).getSelect()) {
+                basicObject original = objects.get(i);
+                basicObject decorated = new BorderDecorator(original, Color.RED, 2);
+                decorated.setSelect(true);
+                objects.set(i, decorated);
+                System.out.println("Border decorator added to: " + decorated.getName());
+                break;
+            }
+        }
+        repaint();
+    }
+
+    // 為選取的物件加上 Shadow Decorator
+    public void addShadowToSelectedObject() {
+        for (int i = 0; i < objects.size(); i++) {
+            if (objects.get(i).getSelect()) {
+                basicObject original = objects.get(i);
+                basicObject decorated = new ShadowDecorator(original, 5, Color.LIGHT_GRAY);
+                decorated.setSelect(true);
+                objects.set(i, decorated);
+                System.out.println("Shadow decorator added to: " + decorated.getName());
+                break;
+            }
+        }
+        repaint();
+    }
+
     public static void unselectAllObject() {
         for (basicObject obj : objects) {
             obj.setSelect(false);
@@ -193,14 +225,15 @@ public class canvasAreaHandler extends JPanel implements MouseListener  {
     }
 
     @Override
-    public void mouseClicked(MouseEvent e) {}
+    public void mouseClicked(MouseEvent e) {
+    }
 
     @Override
-    public void mouseEntered(MouseEvent e) {}
+    public void mouseEntered(MouseEvent e) {
+    }
 
     @Override
-    public void mouseExited(MouseEvent e) {}
+    public void mouseExited(MouseEvent e) {
+    }
 
 }
-
-
