@@ -3,13 +3,18 @@ package initializeUMLEditor;
 import javax.swing.*;
 
 public class Init {
-    private static JFrame uniqueInstance ;
-    private Init() {}
-    public static JFrame getInstance() {
-        if(uniqueInstance == null) {
-            uniqueInstance =  new JFrame(component.frameTitle);
+    private Init() {
+        System.out.println("Init instance is being created");
+    }
+    private static class Holder {
+        private static final JFrame INSTANCE = new JFrame(component.frameTitle);
+        
+        static {
+            System.out.println("Main JFrame instance is being created via Bill Pugh Pattern");
         }
-        return uniqueInstance;
+    }
+    public static JFrame getInstance() {
+        return Holder.INSTANCE;
     }
 }
 
